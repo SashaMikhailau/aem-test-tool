@@ -1,0 +1,18 @@
+[
+  {
+    "test": "asd",
+    "jcr:createdBy": "test"
+  },
+  {
+    "jcr:createdBy": "test"
+  },
+  {
+    "jcr:createdBy": "test",
+    "test": "asd"
+  },
+  {
+    "asd": "abc",
+    "jcr:createdBy": "test",
+    "test": "asd"
+  }
+]

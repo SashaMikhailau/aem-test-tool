@@ -1,18 +1,32 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.sashamikhailau.aemtesttool</id>
-    <name>aem-test-tool Template</name>
-    <vendor>sashamikhailau</vendor>
+    <name>AEM Data Wizard</name>
+    <vendor>Alex Mikhailau</vendor>
 
     <depends>com.intellij.modules.platform</depends>
-
+    <description>
+        <![CDATA[
+      Demonstrates implementing Action and Action Group patterns.<br> Adds entries to the Tools menu.
+    ]]>
+    </description>
     <resource-bundle>messages.MyBundle</resource-bundle>
-
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.sashamikhailau.aemtesttool.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <applicationConfigurable parentId="tools"
+                                 instance="com.github.sashamikhailau.aemtesttool.config.AEMToolsSettingsConfigurable"
+                                 id="com.github.sashamikhailau.aemtesttool.config.AEMToolsSettingsConfigurable"
+                                 displayName="AEM Data Wizard settings"/>
+        <applicationService serviceImplementation="com.github.sashamikhailau.aemtesttool.config.AEMToolsSettingsState"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.sashamikhailau.aemtesttool.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+    <actions>
+        <action id="com.github.sashamikhailau.aemtesttool.action.TestDataCleaningAction"
+                class="com.github.sashamikhailau.aemtesttool.action.TestDataCleaningAction"
+                text="AEM: Clear JSON/XML" description="AEM: Clears JSON/XML from technical data"
+                icon="com.github.sashamikhailau.aemtesttool.icons.SdkIcons.Sdk_default_icon">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <override-text place="MainMenu" text="AEM: Clear JSON/XML"/>
+            <keyboard-shortcut first-keystroke="control alt A" second-keystroke="C" keymap="$default"/>
+        </action>
+    </actions>
 </idea-plugin>
+
+

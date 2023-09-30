@@ -21,14 +21,19 @@ repositories {
     mavenCentral()
 }
 
+
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
-//    implementation(libs.annotations)
+    implementation("com.yevdo:jwildcard:1.4")
+    implementation("org.apache.commons:commons-lang3:3.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1")
 }
 
 // Set the JVM language level used to build the project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
-kotlin {
-    jvmToolchain(17)
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
@@ -69,6 +74,10 @@ tasks {
         gradleVersion = properties("gradleVersion").get()
     }
 
+    "test"(Test::class) {
+        useJUnitPlatform()
+    }
+
     patchPluginXml {
         version = properties("pluginVersion")
         sinceBuild = properties("pluginSinceBuild")
@@ -79,7 +88,7 @@ tasks {
             val start = "<!-- Plugin description -->"
             val end = "<!-- Plugin description end -->"
 
-            with (it.lines()) {
+            with(it.lines()) {
                 if (!containsAll(listOf(start, end))) {
                     throw GradleException("Plugin description section not found in README.md:\n$start ... $end")
                 }
@@ -92,10 +101,10 @@ tasks {
         changeNotes = properties("pluginVersion").map { pluginVersion ->
             with(changelog) {
                 renderItem(
-                    (getOrNull(pluginVersion) ?: getUnreleased())
-                        .withHeader(false)
-                        .withEmptySections(false),
-                    Changelog.OutputType.HTML,
+                        (getOrNull(pluginVersion) ?: getUnreleased())
+                                .withHeader(false)
+                                .withEmptySections(false),
+                        Changelog.OutputType.HTML,
                 )
             }
         }

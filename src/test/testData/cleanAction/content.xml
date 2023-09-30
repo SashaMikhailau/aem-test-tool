@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0">
+    <test jcr:createdBy="test">CONTENT</test>
+    <test2 jcr:createdBy="test" jcr:normal="test">CONTENT</test2>
+    <test3 jcr:normal="test" jcr:createdBy="test">CONTENT</test3>
+</jcr:root>

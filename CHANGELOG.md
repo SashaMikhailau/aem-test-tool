@@ -1,7 +1,8 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# aem-test-tool Changelog
+# AEM Data Wizard Changelog
 
-## [Unreleased]
+## 0.0.1
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+- Capability to eliminate technical AEM properties from JSON and XML files, simplifying your data and enhancing readability.
+- A configurable option for specifying a list of technical properties to remove, including the use of regular expressions for fine-grained control.
