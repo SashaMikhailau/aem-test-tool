@@ -3,6 +3,9 @@
     "test": "asd"
   },
   {
+    "subTest": {
+      "test": "subTest"
+    }
   },
   {
     "test": "asd"

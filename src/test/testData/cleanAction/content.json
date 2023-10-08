@@ -1,10 +1,15 @@
 [
   {
     "test": "asd",
-    "jcr:createdBy": "test"
+    "jcr:createdBy": "test",
+    "jcr:created": "test"
   },
   {
-    "jcr:createdBy": "test"
+    "jcr:createdBy": "test",
+    "subTest": {
+      "test": "subTest",
+      "jcr:createdBy": "test"
+    }
   },
   {
     "jcr:createdBy": "test",

@@ -13,7 +13,7 @@ public class AEMToolsSettingsForm {
 
     public AEMToolsSettingsForm() {
         mainPanel = FormBuilder.createFormBuilder()
-                .addLabeledComponent(new JBLabel("Enter user name: "), properties, 1, false)
+                .addLabeledComponent(new JBLabel("Enter REGEX for properties to be removed from JSON/XML"), properties, 1, false)
                 .addComponentFillVertically(new JPanel(), 0)
                 .getPanel();
     }

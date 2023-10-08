@@ -44,6 +44,7 @@ public class TestDataCleaningAction extends AnAction {
         @Override
         public void visitElement(@NotNull PsiElement element) {
             super.visitElement(element);
+            element.acceptChildren(this);
             if (element instanceof JsonProperty property) {
                 if (isSubjectForClean(property.getName())) {
                     JsonPsiImplUtils.delete(property);
