@@ -4,6 +4,7 @@ package com.github.sashamikhailau.aemtesttool.action;
 
 import com.github.sashamikhailau.aemtesttool.config.AEMToolsSettingsState;
 import com.intellij.json.JsonLanguage;
+import com.intellij.json.psi.JsonContainer;
 import com.intellij.json.psi.JsonProperty;
 import com.intellij.json.psi.impl.JsonPsiImplUtils;
 import com.intellij.lang.xml.XMLLanguage;
@@ -15,6 +16,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiRecursiveElementVisitor;
 import com.intellij.psi.xml.XmlAttribute;
+import com.intellij.psi.xml.XmlTag;
 import com.yevdo.jwildcard.JWildcard;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +46,10 @@ public class TestDataCleaningAction extends AnAction {
         @Override
         public void visitElement(@NotNull PsiElement element) {
             super.visitElement(element);
-            element.acceptChildren(this);
+            if (element instanceof JsonContainer || element instanceof XmlTag) {
+                Arrays.stream(element.getChildren())
+                        .forEach(this::visitElement);
+            }
             if (element instanceof JsonProperty property) {
                 if (isSubjectForClean(property.getName())) {
                     JsonPsiImplUtils.delete(property);

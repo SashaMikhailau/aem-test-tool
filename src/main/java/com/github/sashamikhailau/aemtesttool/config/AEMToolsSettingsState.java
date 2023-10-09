@@ -18,8 +18,8 @@ import org.jetbrains.annotations.NotNull;
 )
 public class AEMToolsSettingsState implements PersistentStateComponent<AEMToolsSettingsState> {
 
-    private static final String DEFAULT_PROPERTIES_FOR_CLEAN = "jcr:uuid,cq:lastModified*,jcr:lastModified*,jcr:created*,jcr:isCheckedOut," +
-            "cq:lastReplicat*,dam:extracted,dam:assetState,dc:modified,*_x0040_*";
+    private static final String DEFAULT_PROPERTIES_FOR_CLEAN = "cq:lastRolledout*,jcr:uuid,cq:lastModified*,jcr:lastModified*,jcr:created*,jcr:isCheckedOut," +
+            "cq:lastReplicat*,dam:extracted,dam:assetState,dc:modified,*_x0040_*,jcr:versionHistory,jcr:predecessors,jcr:baseVersion,jcr:mixinTypes";
     private String propertiesForClean = DEFAULT_PROPERTIES_FOR_CLEAN;
 
     public String getPropertiesForClean() {
