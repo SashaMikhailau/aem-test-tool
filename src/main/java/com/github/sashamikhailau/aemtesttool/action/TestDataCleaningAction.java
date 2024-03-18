@@ -18,7 +18,6 @@ import com.intellij.psi.PsiRecursiveElementVisitor;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlTag;
 import com.yevdo.jwildcard.JWildcard;
-import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -64,7 +63,7 @@ public class TestDataCleaningAction extends AnAction {
         private static boolean isSubjectForClean(String propertyName) {
             AEMToolsSettingsState settings = AEMToolsSettingsState.getInstance();
             String propertiesForClean = settings.getPropertiesForClean();
-            if (StringUtils.isNotBlank(propertiesForClean)) {
+            if (propertiesForClean != null && !propertiesForClean.isEmpty()) {
                 return Arrays.stream(propertiesForClean.split(","))
                         .anyMatch(wildCard -> JWildcard.matches(wildCard, propertyName));
             }

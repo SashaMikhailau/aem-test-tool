@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0">
+<jcr:root jcr:createdBy="test" xmlns:jcr="http://www.jcp.org/jcr/1.0">
     <test jcr:createdBy="test" jcr:created="{Date}2023-01-01">CONTENT</test>
     <test2 jcr:createdBy="test" jcr:normal="test">
         <subTest jcr:createdBy="test" jcr:created="{Date}2023-01-01">CONTENT</subTest>
